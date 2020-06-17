@@ -11,3 +11,17 @@ src
 出力先ディレクトリ
 
 dist
+
+## firebase
+
+firebase側でプロジェクト生成
+
+firebase init で紐づけ
+
+起動
+
+firebase serve
+
+デプロイ
+
+firebase deploy

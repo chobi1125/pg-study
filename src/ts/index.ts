@@ -1,12 +1,47 @@
-let date = new Date();
-let d:object = date;
-console.log(d); // 2020-06-12T01:17:27.076Z 数型で取得してるぽい
-let d1:string = date.toLocaleTimeString();
-console.log(d1); // 10:15:50
-let d2:string = date.toTimeString();
-console.log(d2); // 10:15:50 GMT+0900 (GMT+09:00)
-let d3:string = date.toDateString();
-console.log(d3); // Fri Jun 12 2020
-console.log(d3); // Fri Jun 12 2020
-console.log(d3); // Fri Jun 12 2020
-console.log(d3); // Fri Jun 12 2020
+let $ = (e:string)=> document.getElementById(e);
+
+let result:HTMLInputElement = <HTMLInputElement>$("result");
+
+let userName:string | null = "Sato";
+userName = null;
+
+let Sato:"sato" = "sato";
+
+let num1: number[] = [ 1, 2, 3 ];
+let num2: Array<number> = [ 1, 2, 3 ];
+
+let users: User[] = [
+  {
+      id: 1,
+      name: 'sato',
+      age: 27
+  },{
+      id: 2,
+      name: 'saito'
+  }
+]
+
+type User = {
+  id: number
+  name: string
+  age?: number
+};
+
+function sum(num1: number, num2: number): string {
+  const sum: number = num1 + num2;
+  return `${num1}+${num2}は、${sum}です。`;
+}
+
+sum(3,5) // 3+5は、8です。
+
+interface Foo<N, S> {
+  foo: N;
+  bar: S;
+}
+
+const obj: Foo<number, string> = {
+  foo: 3,
+  bar: 'hi',
+};
+
+const foo: [string, number] = ['foo', 5];

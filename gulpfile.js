@@ -60,7 +60,7 @@ gulp.task('js', function() {
     return(  
       gulp
         .src('./src/ts/*.ts')
-        .pipe(typescript())
+        .pipe(typescript(({ target: "ES6"})))
         .pipe(gulp.dest('./dist/js'))
     );
   // })

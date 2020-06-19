@@ -29,3 +29,17 @@ firebase serve
 デプロイ
 
 firebase deploy
+
+## git
+
+git remote rm origin
+
+git init
+
+git add .
+
+git commit -m"changed title"
+
+git remote add origin git remote add origin https://github.com/chobi1125/pg-study.git
+
+git push -u origin master

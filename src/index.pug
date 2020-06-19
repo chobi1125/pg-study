@@ -13,17 +13,23 @@ html(lang="ja")
     header
       h1 #{ttl}
     main
-      table
+      button#loginBtn(onclick="loginFC()") ログイン
+      button#logoutBtn(onclick="logoutFC()" disabled) ログアウト
+      p#userName 未ログイン
+      img#userPhoto
+
+      input#addDate.display-block(type="date")
+      table#table(class="display-none-js1")
         tr
           td 勉強したこと
           td 時間
         tr
           td
-            input#addText(value="study" type="text")
+            input#addItem(value="study" type="text")
           td
-            input#time(type="text" value=50)
-
-      button#addBtn(onclick="add()") 追加
+            input#addTime(type="text" value=50)
+      
+      button#addBtn(onclick="addDataFB()" class="display-none-js2") 追加
 
       div#chart
 
@@ -34,6 +40,8 @@ html(lang="ja")
     script(src="./js/c3/d3-5.8.2.min.js" charset="utf-8")
     script(src="./js/c3/c3.min.js")
     script(src="./js/useful.js")
+    script(src="./js/index.js")
     script(src="./js/firebase/init.js")
     script(src="./js/firebase/auth.js")
-    script(src="./js/index.js")
+    script(src="./js/firebase/database.js")
+    script(src="./js/c3.js")

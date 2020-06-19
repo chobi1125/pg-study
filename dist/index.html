@@ -12,21 +12,25 @@
       <h1>PG Study</h1>
     </header>
     <main>
-      <table>
+      <button id="loginBtn" onclick="loginFC()">ログイン</button>
+      <button id="logoutBtn" onclick="logoutFC()" disabled>ログアウト</button>
+      <p id="userName">未ログイン</p><img id="userPhoto">
+      <input class="display-block" id="addDate" type="date">
+      <table class="display-none-js1" id="table">
         <tr>
           <td>勉強したこと</td>
           <td>時間</td>
         </tr>
         <tr>
           <td>
-            <input id="addText" value="study" type="text">
+            <input id="addItem" value="study" type="text">
           </td>
           <td>
-            <input id="time" type="text" value="50">
+            <input id="addTime" type="text" value="50">
           </td>
         </tr>
       </table>
-      <button id="addBtn" onclick="add()">追加</button>
+      <button class="display-none-js2" id="addBtn" onclick="addDataFB()">追加</button>
       <div id="chart"></div>
     </main>
     <script src="https://www.gstatic.com/firebasejs/7.15.2/firebase-app.js"></script>
@@ -36,8 +40,10 @@
     <script src="./js/c3/d3-5.8.2.min.js" charset="utf-8"></script>
     <script src="./js/c3/c3.min.js"></script>
     <script src="./js/useful.js"></script>
+    <script src="./js/index.js"></script>
     <script src="./js/firebase/init.js"></script>
     <script src="./js/firebase/auth.js"></script>
-    <script src="./js/index.js"></script>
+    <script src="./js/firebase/database.js"></script>
+    <script src="./js/c3.js"></script>
   </body>
 </html>

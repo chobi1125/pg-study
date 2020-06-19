@@ -2,29 +2,34 @@
   firebase 認証機能
  */
 
-let loginUser;
-let userPhoto = $("userPhoto");
-let userName = $("userName");
+let login_user;
+let user_photo = $("userPhoto");
+let user_name = $("userName");
+let login_btn = $("loginBtn");
+let logout_btn = $("logoutBtn");
+let display_none1 = document.querySelector(".display-none-js1")
+let display_none2 = document.querySelector(".display-none-js2")
+display_none1.className = "display-none";
+display_none2.className = "display-none";
 
-let userFC = () => {
+// ログイン確認&ログインしていた場合の処理
+let loggedInFC = () => {
   if( firebase.auth().currentUser != null){
-    main.style = undefined;
-    loginBtn.disabled = true;
-    logoutBtn.disabled = false;
-    loginUser = firebase.auth().currentUser;
-    userName.textContent = `ログインユーザー名：${user.displayName}`;
+    login_btn.disabled = true;
+    logout_btn.disabled = false;
+    login_user = firebase.auth().currentUser;
+    user_name.textContent = `ログインユーザー名：${login_user.displayName}`;
     // userPhoto.src = user.photoURL;
-    userPhoto.src = 'https://lh4.googleusercontent.com/-F4BlrVyQVNc/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucnnkvNSOT3A3H3UHFHwEBledVS67g/photo.jpg';
-    userPhoto.style = "border-radius: 50%;width: 34px;";
+    user_photo.src = 'https://lh4.googleusercontent.com/-F4BlrVyQVNc/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucnnkvNSOT3A3H3UHFHwEBledVS67g/photo.jpg';
+    user_photo.style = "border-radius: 50%;width: 34px;";
+    display_none1.className = "display-block";
+    display_none2.className = "display-block";
   }
 }
 
 // ログイン処理
 let loginFC = ()=> {
-  // firebase.auth().signInWithPopup(provider).then(function(result) {
   firebase.auth().signInWithRedirect(provider).then(function(result) {
-    l("Login successful.")
-    // location.reload();
   }).catch(function(error) {
     errorCode = error
   });
@@ -33,7 +38,6 @@ let loginFC = ()=> {
 // ログイン方法がリダイレクトの場合
 firebase.auth().getRedirectResult().then(function(result) {
   if (result.credential) {
-    l("redirected")
     location.reload();
   }
 }).catch(function(error) {
@@ -46,6 +50,6 @@ let logoutFC = ()=> {
     l("Sign-out successful.")
     location.reload();
   }).catch(function(error) {
-    l("An error happened.")
+    l("logout false")
   });
 }

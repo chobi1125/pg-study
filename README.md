@@ -30,6 +30,18 @@ firebase serve
 
 firebase deploy
 
+### ログイン機能
+
+google有効化
+
+https://console.firebase.google.com/u/0/project/pg-study/authentication/providers?hl=ja
+
+### データベース
+
+作成しないとエラー出る
+
+
+
 ## git
 
 git remote rm origin

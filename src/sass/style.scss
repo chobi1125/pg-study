@@ -1,11 +1,9 @@
 h1 {
   color: rgba(0, 187, 255, 0.585);
 }
-table {
-  // border-collapse: collapse;
-  // color: rgba(0, 0, 0, 0.258);
+.display-none {
+  display: none;
 }
-td {
-  // border: solid 1px;
-	// padding: 0.5em;
+.display-block {
+  display: block;
 }

@@ -1,30 +1,6 @@
-let addText = document.getElementById("addText");
-let time = document.getElementById("time");
+let addItem = $("addItem");
+let addTime = $("addTime");
+let add_date = $("addDate");
 
-let array = [
-  ['JavaScript', 10],
-  ['React', 30],
-  // ['Vue.js', 60],
-  // ['Ruby', 40],
-  // ['PHP', 50],
-]
+let array = []
 
-let add = () => {
-  let addArray = [addText.value, Number(time.value)];
-  console.log(addArray);
-  array.push(addArray);
-  mkChart()
-}
-
-
-let mkChart = () => {
-  let chart = c3.generate({
-    data: {
-      columns: array,
-      type: 'pie',
-      order: null
-    }
-  });
-}
-
-mkChart();

@@ -38,7 +38,7 @@ git init
 
 git add .
 
-git commit -m"changed title"
+git commit -m "first commit"
 
 git remote add origin git remote add origin https://github.com/chobi1125/pg-study.git
 

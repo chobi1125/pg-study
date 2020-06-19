@@ -40,16 +40,20 @@ let serverRemovedData = (data) => {
   array.splice(data.id -1,1);
   mkChart();
 };
+
 // Firebaseへの追加
 let addDataFB = () => {
-  let firebase_added_id = firebase_latest_id + 1;
-  firebase_latest_id++;
-  db.ref(`/users/${firebase.auth().currentUser.uid}/${firebase_added_id}`).set({
-    id:firebase_added_id,
-    date:add_date.value,
-    item:addItem.value,
-    time:addTime.value
-  });
-  addItem.value = "";
-  addTime.value = "";
+  if (before_validate() === true){
+    let firebase_added_id = firebase_latest_id + 1;
+    firebase_latest_id++;
+    db.ref(`/users/${firebase.auth().currentUser.uid}/${firebase_added_id}`).set({
+      id:firebase_added_id,
+      date:add_date.value,
+      item:add_item.value,
+      time:add_time.value
+    });
+    add_item.value = "";
+    add_time.value = "";
+    add_date.value = "";
+  }
 };

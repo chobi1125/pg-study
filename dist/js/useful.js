@@ -19,11 +19,11 @@ let result = $("result");
 
 // エンターキーで追加
 let enter = () => {
-  addTodo.onkeypress = (e) => {
+  inputText.onkeypress = (e) => {
     const key = e.keyCode || e.charCode || 0;
     // 13はEnterキーのキーコード
     if (key == 13) {
-      // addFB(); // ここに関数
+      addDataFB(); // ここに関数
     }
   };
 };

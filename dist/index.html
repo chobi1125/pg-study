@@ -15,22 +15,27 @@
       <button id="loginBtn" onclick="loginFC()">ログイン</button>
       <button id="logoutBtn" onclick="logoutFC()" disabled>ログアウト</button>
       <p id="userName">未ログイン</p><img id="userPhoto">
-      <input class="display-block" id="addDate" type="date">
-      <table class="display-none-js1" id="table">
+      <p class="validate-message-calendar" type="text">日付を選択してください</p>
+      <input class="display-block" id="addDate" type="date"><span class="caution-message">※必須</span>
+      <table class="table-display-none" id="table">
         <tr>
           <td>勉強したこと</td>
           <td>時間</td>
         </tr>
-        <tr>
+        <tr class="validate-message-text">
+          <td>※両方入力してください</td>
+          <td> </td>
+        </tr>
+        <tr id="inputText" onclick="enter()">
           <td>
-            <input id="addItem" value="study" type="text">
+            <input id="addItem" type="text" value="" placeholder="必須※同名入力不可">
           </td>
           <td>
-            <input id="addTime" type="text" value="50">
+            <input id="addTime" type="tel" value="" placeholder="必須※半角数字で入力">
           </td>
         </tr>
       </table>
-      <button class="display-none-js2" id="addBtn" onclick="addDataFB()">追加</button>
+      <button class="add-btn-display-none" id="addBtn" onclick="addDataFB()">追加</button>
       <div id="chart"></div>
     </main>
     <script src="https://www.gstatic.com/firebasejs/7.15.2/firebase-app.js"></script>
@@ -41,6 +46,7 @@
     <script src="./js/c3/c3.min.js"></script>
     <script src="./js/useful.js"></script>
     <script src="./js/index.js"></script>
+    <script src="./js/validate.js"></script>
     <script src="./js/firebase/init.js"></script>
     <script src="./js/firebase/auth.js"></script>
     <script src="./js/firebase/database.js"></script>

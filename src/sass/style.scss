@@ -7,3 +7,12 @@ h1 {
 .display-block {
   display: block;
 }
+
+.caution-message {
+  color: rgba(0, 0, 0, 0.551);
+  font-size: 70%;
+}
+
+.validate-message {
+  color: red;
+}

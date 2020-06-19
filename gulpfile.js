@@ -74,7 +74,7 @@ gulp.task('watch', function (done) {
   };
   gulp.watch(paths.src + '/**.pug').on('change', gulp.series('html', reload));
   gulp.watch(paths.src + '/sass/**.scss').on('change', gulp.series('css', reload));
-  gulp.watch(paths.src + '/ts/**.ts').on('change', gulp.series('js', reload));
+  // gulp.watch(paths.src + '/ts/**.ts').on('change', gulp.series('js', reload));
 });
 
-gulp.task('default', gulp.series( gulp.parallel('html', 'css', 'js', 'watch', 'browser-sync')));
+gulp.task('default', gulp.series( gulp.parallel('html', 'css', 'watch', 'browser-sync')));

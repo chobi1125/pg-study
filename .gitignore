@@ -1,3 +1,4 @@
-dist
+# dist
 _gulpfile
 node_modules
+firebaseConfig.js

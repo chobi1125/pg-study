@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>PG Study</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/c3/c3.css">
+  </head>
+  <body>
+    <header>
+      <h1>PG Study</h1>
+    </header>
+    <main>
+      <table>
+        <tr>
+          <td>勉強したこと</td>
+          <td>時間</td>
+        </tr>
+        <tr>
+          <td>
+            <input id="addText" value="study" type="text">
+          </td>
+          <td>
+            <input id="time" type="text" value="50">
+          </td>
+        </tr>
+      </table>
+      <button id="addBtn" onclick="add()">追加</button>
+      <div id="chart"></div>
+    </main>
+    <script src="https://www.gstatic.com/firebasejs/7.15.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.2/firebase-analytics.js"></script>
+    <script src="./js/c3/d3-5.8.2.min.js" charset="utf-8"></script>
+    <script src="./js/c3/c3.min.js"></script>
+    <script src="./firebase/firebaseConfig.js"></script>
+    <script src="./js/index.js"></script>
+  </body>
+</html>

@@ -1,5 +1,5 @@
 -
-  const ttl = "Pug/Sass/TypeScriptの環境構築"
+  const ttl = "PG Study"
 
 doctype
 html(lang="ja")
@@ -8,8 +8,28 @@ html(lang="ja")
     meta(name="viewport" content="width=device-width,initial-scale=1.0")
     title #{ttl}
     link(rel="stylesheet" href="css/style.css")
+    link(rel="stylesheet" href="css/c3/c3.css")
   body
     header
       h1 #{ttl}
     main
-      p フロントエンドの開発環境構築
+      table
+        tr
+          td 勉強したこと
+          td 時間
+        tr
+          td
+            input#addText(value="study" type="text")
+          td
+            input#time(type="text" value=50)
+
+      button#addBtn(onclick="add()") 追加
+
+      div#chart
+
+    script(src="https://www.gstatic.com/firebasejs/7.15.2/firebase-app.js")
+    script(src="https://www.gstatic.com/firebasejs/7.15.2/firebase-analytics.js")
+    script(src="./js/c3/d3-5.8.2.min.js" charset="utf-8")
+    script(src="./js/c3/c3.min.js")
+    script(src="./firebase/firebaseConfig.js")
+    script(src="./js/index.js")

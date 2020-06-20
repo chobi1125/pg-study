@@ -8,6 +8,10 @@ h1 {
   display: block;
 }
 
+.display-inline {
+  display: inline-block;
+}
+
 .caution-message {
   color: rgba(0, 0, 0, 0.551);
   font-size: 70%;
@@ -15,4 +19,29 @@ h1 {
 
 .validate-message {
   color: red;
+}
+
+img {
+  margin-bottom: 10px;
+}
+
+p {
+  margin: 5px;//topがデフォで15pxくらいある
+}
+
+textarea {
+  margin-bottom: 5px;
+  resize: none;
+  width:300px;
+  height:200px;
+}
+
+#chart {
+  max-width: 500px;
+  // width: 50%;
+}
+
+#chart2 {
+  max-width: 500px;
+  // width: 50%;
 }

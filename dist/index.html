@@ -14,29 +14,128 @@
     <main>
       <button id="loginBtn" onclick="loginFC()">ログイン</button>
       <button id="logoutBtn" onclick="logoutFC()" disabled>ログアウト</button>
-      <p id="userName">未ログイン</p><img id="userPhoto">
-      <p class="validate-message-calendar" type="text">日付を選択してください</p>
-      <input class="display-block" id="addDate" type="date"><span class="caution-message">※必須</span>
-      <table class="table-display-none" id="table">
-        <tr>
-          <td>勉強したこと</td>
-          <td>時間</td>
-        </tr>
-        <tr class="validate-message-text">
-          <td>※両方入力してください</td>
-          <td> </td>
-        </tr>
-        <tr id="inputText" onclick="enter()">
-          <td>
-            <input id="addItem" type="text" value="" placeholder="必須※同名入力不可">
-          </td>
-          <td>
-            <input id="addTime" type="tel" value="" placeholder="必須※半角数字で入力">
-          </td>
-        </tr>
-      </table>
-      <button class="add-btn-display-none" id="addBtn" onclick="addDataFB()">追加</button>
-      <div id="chart"></div>
+      <p id="userName">ログインしてください</p><img class="display-block" id="userPhoto">
+      <div class="main-display-none">
+        <p class="validate-message-calendar" type="text">日付を選択してください</p>
+        <input class="display-inline" id="addDate" type="date">
+        <p class="caution-message">※必須</p>
+        <table id="table">
+          <tr>
+            <td>タグ</td>
+            <td>時間</td>
+          </tr>
+          <tr class="validate-message-text">
+            <td>※両方入力してください</td>
+            <td> </td>
+          </tr>
+          <tr id="inputText" onclick="enter()">
+            <td>
+              <input id="addItem" type="text" value="" placeholder="必須※同名入力不可">
+            </td>
+            <td>
+              <select id="timeH" name="timeH">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+              </select><span>時間</span>
+              <select id="timeM" name="timeM">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+                <option value="45">45</option>
+                <option value="46">46</option>
+                <option value="47">47</option>
+                <option value="48">48</option>
+                <option value="49">49</option>
+                <option value="50">50</option>
+                <option value="51">51</option>
+                <option value="52">52</option>
+                <option value="53">53</option>
+                <option value="54">54</option>
+                <option value="55">55</option>
+                <option value="56">56</option>
+                <option value="57">57</option>
+                <option value="58">58</option>
+                <option value="59">59</option>
+              </select><span>分</span>
+            </td>
+          </tr>
+        </table>
+        <p>学習記録</p>
+        <textarea id="addDiary"></textarea>
+        <button class="display-block" id="addBtn" onclick="addDataFB()">追加</button>
+        <div class="display-none" id="editRemoveBtn">
+          <button onclick="editDataFB()">更新</button>
+          <button onclick="removeDataFB()">削除</button>
+        </div>
+        <p>学習割合</p>
+        <div id="chart"></div>
+        <p>学習推移</p>
+        <div id="chart2"></div>
+      </div>
     </main>
     <script src="https://www.gstatic.com/firebasejs/7.15.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.15.2/firebase-analytics.js"></script>
@@ -50,6 +149,7 @@
     <script src="./js/firebase/init.js"></script>
     <script src="./js/firebase/auth.js"></script>
     <script src="./js/firebase/database.js"></script>
+    <script src="./js/diary.js"></script>
     <script src="./js/c3.js"></script>
   </body>
 </html>

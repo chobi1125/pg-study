@@ -9,10 +9,6 @@ let el = (e) => document.createElement(e);
 /* 
   さくっと検証用
  */
-
-let result = $("result");
-// let addBtn = $("addBtn");
-
 /* 
   その他便利な関数
  */

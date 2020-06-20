@@ -1,12 +1,9 @@
 let before_validate = () => {
   console.log("before_validate")
   if (add_date.value !== "" && add_item.value !== "" && add_time.value !== "") {
-    console.log("全て入力されています")
     if(item_overlap_validate() === undefined){
-      console.log("アイテム名に被りなし")
       l(negative_or_0_number_validate());
       if(negative_or_0_number_validate() === true){
-        console.log("trueを返す")
         return true
       } else {
         after_validate_negative_number();
@@ -15,20 +12,18 @@ let before_validate = () => {
       after_validate_overlap();
     }
   } else {
-    console.log("未入力有")
     after_validate();
   }
 }
 
 let item_overlap_validate = () => {
-  let find_result = array.find((value) => {
+  let find_result = pieArray.find((value) => {
     return value[0] === add_item.value; 
   })
   return find_result;
 }
 
 let negative_or_0_number_validate = () => {
-  console.log("正の数か確認")
   let x = Math.sign(add_time.value);
   l(x);
   if (x === 1){
@@ -52,7 +47,7 @@ let after_validate_overlap = () => {
 
 let after_validate_negative_number = () => {
   validate_message_text.className = "validate-message";
-  validate_message_text.textContent = "正の数を入力してください";
+  validate_message_text.textContent = "正の数(※半角)を入力してください";
 }
 
 input_text.addEventListener('change', () => {

@@ -15,28 +15,48 @@ html(lang="ja")
     main
       button#loginBtn(onclick="loginFC()") ログイン
       button#logoutBtn(onclick="logoutFC()" disabled) ログアウト
-      p#userName 未ログイン
-      img#userPhoto
+      p#userName ログインしてください
+      img#userPhoto.display-block
 
-      p.validate-message-calendar(type="text") 日付を選択してください
-      input#addDate.display-block(type="date")
-      span.caution-message ※必須
-      table#table.table-display-none
-        tr
-          td 勉強したこと
-          td 時間
-        tr.validate-message-text
-          td ※両方入力してください
-          td 
-        tr#inputText(onclick="enter()")
-          td
-            input#addItem(type="text" value="" placeholder="必須※同名入力不可")
-          td
-            input#addTime(type="tel" value="" placeholder="必須※半角数字で入力")
-      
-      button#addBtn(onclick="addDataFB()" class="add-btn-display-none") 追加
+      div.main-display-none
+        p.validate-message-calendar(type="text") 日付を選択してください
+        input#addDate.display-inline(type="date")
+        //- button(onclick="diaryCheck()") 確認
+        p.caution-message ※必須
+        table#table
+          tr
+            td タグ
+            td 時間
+          tr.validate-message-text
+            td ※両方入力してください
+            td 
+          tr#inputText(onclick="enter()")
+            td
+              input#addItem(type="text" value="" placeholder="必須※同名入力不可")
+            td
+              //- input#addTime(type="tel" value="" placeholder="必須※半角数字で入力")
+              select#timeH(name="timeH")
+                - for (var x = 0; x < 24; x++)
+                  option(value=x) #{x}
+              span 時間
+              select#timeM(name="timeM")
+                - for (var x = 0; x < 60; x++)
+                  option(value=x) #{x}
+              span 分
 
-      div#chart
+        
+        p 学習記録
+        textarea#addDiary
+
+        button#addBtn(onclick="addDataFB()" class="display-block") 追加
+        div#editRemoveBtn.display-none
+          button(onclick="editDataFB()") 更新
+          button(onclick="removeDataFB()") 削除
+
+        p 学習割合
+        div#chart
+        p 学習推移
+        div#chart2
 
     script(src="https://www.gstatic.com/firebasejs/7.15.2/firebase-app.js")
     script(src="https://www.gstatic.com/firebasejs/7.15.2/firebase-analytics.js")
@@ -50,4 +70,5 @@ html(lang="ja")
     script(src="./js/firebase/init.js")
     script(src="./js/firebase/auth.js")
     script(src="./js/firebase/database.js")
+    script(src="./js/diary.js")
     script(src="./js/c3.js")

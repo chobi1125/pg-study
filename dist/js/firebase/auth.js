@@ -18,8 +18,7 @@ let loggedInFC = () => {
     // userPhoto.src = user.photoURL;
     user_photo.src = 'https://lh4.googleusercontent.com/-F4BlrVyQVNc/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucnnkvNSOT3A3H3UHFHwEBledVS67g/photo.jpg';
     user_photo.style = "border-radius: 50%;width: 34px;";
-    table_display_none.className = "display-block";
-    add_btn_display_none.className = "display-block";
+    main_display_none.className = "display-block";
   }
 }
 

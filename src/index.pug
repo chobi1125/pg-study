@@ -27,14 +27,10 @@ html(lang="ja")
           tr
             td タグ
             td 時間
-          tr.validate-message-text
-            td ※両方入力してください
-            td 
-          tr#inputText(onclick="enter()")
+          tr
             td
-              input#addItem(type="text" value="" placeholder="必須※同名入力不可")
+              input#addTag(type="text" value="" placeholder="")
             td
-              //- input#addTime(type="tel" value="" placeholder="必須※半角数字で入力")
               select#timeH(name="timeH")
                 - for (var x = 0; x < 24; x++)
                   option(value=x) #{x}

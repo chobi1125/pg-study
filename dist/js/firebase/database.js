@@ -3,7 +3,11 @@ let connect_DB;
 let pieArray = [];
 let lineGraphArrayX = ['x'];
 let lineGraphArrayY = ['学習時間'];
-
+let check_tag = [];
+let ttl_time = 0;
+let addArray = [];
+let allArray = []; // 全てのデータ
+let overlap_tag_array = []; // 重複するタグデータ
 
 let databaseInitFC = () => {
   connect_DB = db.ref(`/users/${firebase.auth().currentUser.uid}`);
@@ -22,14 +26,36 @@ let databaseInitFC = () => {
   connect_DB.on('child_removed', function(data) {
     location.reload();
   });
-
 };
+
 // DB取得後、chartの作成
 let chartAddData = () => {
-  let addArray = [firebase_db_latest.item, Number(firebase_db_latest.time)]
-  pieArray.push(addArray);
+  // タグが生成されていなかった場合
+  if (check_tag.indexOf(firebase_db_latest.tag) === -1){
+    check_tag.push(firebase_db_latest.tag);
+    let addArray = [firebase_db_latest.tag, Number(firebase_db_latest.time)]
+    pieArray.push(addArray);
+  } else {
+    // タグが既にあった場合,allArrayから1つずつ配列をピックアップしてフィルタ
+    allArray.filter((value) => {
+      // 被ったタグの合計時間を出力
+      if (value.tag === firebase_db_latest.tag) {
+        ttl_time += value.time;
+      }
+    })
+    // 被ったタグの配列を作成
+    overlap_tag_array = [firebase_db_latest.tag, ttl_time];
+    console.log(overlap_tag_array);
+    // 開始位置を特定。
+    let overlap_key = check_tag.indexOf(firebase_db_latest.tag)
+    console.log(overlap_key);
+    // 配列の要素の上書き(新しい要素,開始位置,上書き個数)
+    pieArray.fill(overlap_tag_array,overlap_key,overlap_key+1);
+    ttl_time = 0;
+  }
   mkChart();
 };
+
 // DB取得後、lineChartの作成
 let lineChartAddData = () => {
   lineGraphArrayX.push(firebase_db_latest.date);
@@ -48,14 +74,15 @@ let addDataFB = () => {
     db.ref(`/users/${firebase.auth().currentUser.uid}/${firebase_db_latest.id + 1}`).set({
       id:firebase_db_latest.id + 1,
       date:add_date.value,
-      item:add_item.value,
+      tag:add_tag.value,
       time:minutesToHourTime(),
       timeH:time_h.value,
       timeM:time_m.value,
       diary:add_diary.value
     });
-    add_item.value = "";
-    add_time.value = "";
+    add_tag.value = "";
+    timeH.value = "";
+    timeM.value = "";
     add_date.value = "";
     add_diary.value = "";
   }
@@ -65,9 +92,10 @@ let editDataFB = () => {
   console.log("edit!!")
   connect_DB_edit = calendar_result.id;
   db.ref(`/users/${firebase.auth().currentUser.uid}/${connect_DB_edit}`).update({
-    item:add_item.value,
-    time_h:add_time.value,
-    time_m:add_time.value,
+    tag:add_tag.value,
+    time:minutesToHourTime(),
+    timeH:time_h.value,
+    timeM:time_m.value,
     diary:add_diary.value
   });
 };
@@ -76,9 +104,4 @@ let removeDataFB = () => {
   console.log("remove")
   connect_DB_edit = calendar_result.id;
   db.ref(`/users/${firebase.auth().currentUser.uid}/${connect_DB_edit}`).remove();
-  // リロードするから不要。
-  // add_date.value = "";
-  // add_item.value = "";
-  // add_time.value = "";
-  // add_diary.value = "";
 };

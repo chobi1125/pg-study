@@ -28,9 +28,14 @@ html(lang="ja")
       h1 #{ttl}
     main
       button#loginBtn(onclick="loginFC()") ログイン
-      button#logoutBtn(onclick="logoutFC()" disabled) ログアウト
-      p#userName ログインしてください
+      button#logoutBtn.display-none(onclick="logoutFC()") ログアウト
+      button#testLoginBtn(onclick="testLoginFC()") テストログイン
+      p#userName ※ログインしてご利用ください
       img#userPhoto.display-block
+
+      div#beforeLogin
+        p 👇日々の学習を記録/グラフで自己分析
+        img(src="./img/demo.jpg" width="375px")
 
       h3#ttlTime
 

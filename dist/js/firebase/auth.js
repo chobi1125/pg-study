@@ -11,13 +11,17 @@ let logout_btn = $("logoutBtn");
 // ログイン確認&ログインしていた場合の処理
 let loggedInFC = () => {
   if( firebase.auth().currentUser != null){
-    login_btn.disabled = true;
-    logout_btn.disabled = false;
+    before_login.className = "display-none";
+    login_btn.className = "display-none";
+    logout_btn.className = "display-inline";
+    test_login_btn.className = "display-none";
     login_user = firebase.auth().currentUser;
-    user_name.textContent = `ログインユーザー名：${login_user.displayName}`;
-    user_photo.src = login_user.photoURL;
-    // user_photo.src = 'https://lh4.googleusercontent.com/-F4BlrVyQVNc/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucnnkvNSOT3A3H3UHFHwEBledVS67g/photo.jpg';
-    user_photo.style = "border-radius: 50%;width: 34px;";
+    user_name.textContent = `ログインユーザー名：テストユーザー※ログアウトでデータが消えます`;
+    if(firebase.auth().currentUser.displayName != null){
+      user_name.textContent = `ログインユーザー名：${login_user.displayName}`;
+      user_photo.src = login_user.photoURL;
+      user_photo.style = "border-radius: 50%;width: 34px;";
+    }
     main_display_none.className = "display-block";
   }
 }
@@ -27,6 +31,19 @@ let loginFC = ()=> {
   firebase.auth().signInWithRedirect(provider).then(function(result) {
   }).catch(function(error) {
     errorCode = error
+  });
+};
+
+// テストログイン
+let testLoginFC = () => {
+  firebase.auth().signInAnonymously()
+  .catch(function(error) {
+    console.log(error.message);
+  });
+  firebase.auth().onAuthStateChanged(function(user) {
+    var isAnonymous = user.isAnonymous;
+    var uid = user.uid;
+    location.reload();
   });
 };
 

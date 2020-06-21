@@ -13,8 +13,12 @@
     </header>
     <main>
       <button id="loginBtn" onclick="loginFC()">ログイン</button>
-      <button id="logoutBtn" onclick="logoutFC()" disabled>ログアウト</button>
-      <p id="userName">ログインしてください</p><img class="display-block" id="userPhoto">
+      <button class="display-none" id="logoutBtn" onclick="logoutFC()">ログアウト</button>
+      <button id="testLoginBtn" onclick="testLoginFC()">テストログイン</button>
+      <p id="userName">※ログインしてご利用ください</p><img class="display-block" id="userPhoto">
+      <div id="beforeLogin">
+        <p>👇日々の学習を記録/グラフで自己分析</p><img src="./img/demo.jpg" width="375px">
+      </div>
       <h3 id="ttlTime"></h3>
       <div class="main-display-none">
         <p class="validate-message-calendar" type="text">日付を選択してください</p>

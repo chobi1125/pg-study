@@ -1,8 +1,6 @@
 let firebase_db_latest = {id:0};
 let connect_DB;
 let pieArray = [];
-let lineGraphArrayX = ['x'];
-let lineGraphArrayY = ['学習時間'];
 let check_tag = [];
 let tag_ttl_time = 0; // タグ毎の合計時間
 let addArray = [];
@@ -105,13 +103,6 @@ let chartAddData = () => {
   }
   mkChart();
 };
-
-// DB取得後、lineChartの作成
-let lineChartAddData = () => {
-  lineGraphArrayX.push(firebase_db_latest.date);
-  lineGraphArrayY.push(firebase_db_latest.dailyTtlTime);
-  mkLineChart();
-}
 // 時間の計算
 let minutesToHourTime = (h,m) => {
   let minutesToHour = Math.floor(Number(m)/60 * 100) /100;
@@ -175,7 +166,8 @@ let editDataFB = () => {
 };
 // Firebaseへ削除処理
 let removeDataFB = () => {
-  console.log("remove")
-  connect_DB_edit = calendar_result.id;
-  db.ref(`/users/${firebase.auth().currentUser.uid}/${connect_DB_edit}`).remove();
+  if(window.confirm("本当に削除してもいいですか？")){
+    connect_DB_edit = calendar_result.id;
+    db.ref(`/users/${firebase.auth().currentUser.uid}/${connect_DB_edit}`).remove();
+  }
 };

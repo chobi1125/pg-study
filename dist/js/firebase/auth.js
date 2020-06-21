@@ -15,8 +15,8 @@ let loggedInFC = () => {
     logout_btn.disabled = false;
     login_user = firebase.auth().currentUser;
     user_name.textContent = `ログインユーザー名：${login_user.displayName}`;
-    // userPhoto.src = user.photoURL;
-    user_photo.src = 'https://lh4.googleusercontent.com/-F4BlrVyQVNc/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucnnkvNSOT3A3H3UHFHwEBledVS67g/photo.jpg';
+    user_photo.src = login_user.photoURL;
+    // user_photo.src = 'https://lh4.googleusercontent.com/-F4BlrVyQVNc/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucnnkvNSOT3A3H3UHFHwEBledVS67g/photo.jpg';
     user_photo.style = "border-radius: 50%;width: 34px;";
     main_display_none.className = "display-block";
   }

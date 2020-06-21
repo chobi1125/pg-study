@@ -6,6 +6,8 @@ let add_btn = $("addBtn");
 let edit_remove_btn = $("editRemoveBtn");
 let time_h = $("timeH");
 let time_m = $("timeM");
+let ttl_time_text = $("ttlTime");
+let daily_time = $("dailyTime");
 
 let main_display_none = document.querySelector(".main-display-none");
 let add_btn_display_none = document.querySelector(".add-btn-display-none");

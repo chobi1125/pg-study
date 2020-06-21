@@ -2,9 +2,9 @@
   効率化
  */
 
-let $ = (e) => document.getElementById(e);
-let l = (e) => console.log(e);
-let el = (e) => document.createElement(e);
+let $ = e => document.getElementById(e);
+let l = e => console.log(e);
+let el = e => document.createElement(e);
 
 /* 
   さくっと検証用

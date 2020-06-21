@@ -1,5 +1,19 @@
 -
   const ttl = "PG Study"
+  const mention = 
+  `日々の学習を記録しましょう◎
+  
+  記録の仕方
+  ①日付を指定(※必須)
+  ②タグを自由に入力(3つまで。未入力OK)
+  ③タグ毎に学習時間を入力
+  ④学習記録を自由に入力
+  ⑤追加
+
+  日付を選択すると過去の登録を確認・編集・削除できます
+  
+  ※注意点※
+  タグは大文字・小文字違うと合算されません`
 
 doctype
 html(lang="ja")
@@ -18,9 +32,12 @@ html(lang="ja")
       p#userName ログインしてください
       img#userPhoto.display-block
 
+      h3#ttlTime
+
       div.main-display-none
         p.validate-message-calendar(type="text") 日付を選択してください
         input#addDate.display-inline(type="date")
+        span#dailyTime(style="padding-left:10px")
         //- button(onclick="diaryCheck()") 確認
         p.caution-message ※必須
         table#table
@@ -39,10 +56,39 @@ html(lang="ja")
                 - for (var x = 0; x < 60; x++)
                   option(value=x) #{x}
               span 分
+          //- tr#tag2.display-none
+          tr#tag2
+            td
+              input#addTag2(type="text" value="" placeholder="")
+            td
+              select#timeH2(name="timeH")
+                - for (var x = 0; x < 24; x++)
+                  option(value=x) #{x}
+              span 時間
+              select#timeM2(name="timeM")
+                - for (var x = 0; x < 60; x++)
+                  option(value=x) #{x}
+              span 分
+          //- tr#tag3.display-none
+          tr#tag3
+            td
+              input#addTag3(type="text" value="" placeholder="")
+            td
+              select#timeH3(name="timeH")
+                - for (var x = 0; x < 24; x++)
+                  option(value=x) #{x}
+              span 時間
+              select#timeM3(name="timeM")
+                - for (var x = 0; x < 60; x++)
+                  option(value=x) #{x}
+              span 分
+
+        //- button#tagAddBtn(onclick="tagAdd()" class="display-block") タグ追加
+          
 
         
         p 学習記録
-        textarea#addDiary
+        textarea#addDiary(placeholder=mention)
 
         button#addBtn(onclick="addDataFB()" class="display-block") 追加
         div#editRemoveBtn.display-none
@@ -67,4 +113,5 @@ html(lang="ja")
     script(src="./js/firebase/auth.js")
     script(src="./js/firebase/database.js")
     script(src="./js/diary.js")
+    script(src="./js/mktag.js")
     script(src="./js/c3.js")

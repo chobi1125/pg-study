@@ -31,5 +31,6 @@ add_date.addEventListener('change',() => {
     add_diary.value = "";
     add_btn.className = "display-block";
     edit_remove_btn.className = "display-none";
+    daily_time.textContent = "";
   }
 })
